@@ -36,36 +36,39 @@ class Ether(Layer):
 		print('3)Ether().show(): Displays parameters')
 		print('4)Ether.help(): Displays this message')
 
-	def __init__(self,dst="00:00:00:00:00:00",src="00:00:00:00:00:00"):
-		self.dst=dst
-		self.src=src
-		self.ether_type=2048
+	def __init__(self,dst = "00:00:00:00:00:00",src = "00:00:00:00:00:00"):
+		self.dst = dst
+		self.src = src
+		self.ether_type = 2048
 
 	def show(self):
 		print('#Ethernet Header:\ndst={}\nsrc={}\nether_type={}\n'
 			.format(self.dst.upper(),self.src.upper(),self.ether_type))
 	
 	def summary(self):
-		ether_type=""
-		if(self.ether_type in Ether.ether_types.keys()):
-			ether_type = Ether.ether_types[self.ether_type]
-		else:
-			ether_type = str(self.ether_type)
+		if(self.ether_type not in Ether.ether_types.keys()):
+			logging.error('Undefined Type {} for Ether().ether_type'.format(self.ether_type))
+			Ether.help()
+			return
+
+		ether_type = Ether.ether_types[self.ether_type]
 		print('#Ethernet Header: Source MAC-> {}, Destination MAC-> {}, Frame Type-> {}'
 			.format(self.src.upper(),self.dst.upper(),ether_type))
+			
 
 	def encode(self):
-		encoded=None
-		if(self.ether_type in Ether.ether_types.keys()):
-			encoded=struct.pack('! 6s 6s H',Formatter.mac_to_bytes(self.dst),
-				Formatter.mac_to_bytes(self.src),int(self.ether_type))
-		else:
-			print('Undefined Type {} for Ether().ether_type'.format(self.ether_type))
+		encoded = None
+		if(self.ether_type not in Ether.ether_types.keys()):
+			logging.error('Undefined Type {} for Ether().ether_type'.format(self.ether_type))
 			Ether.help()
+			return encoded
+
+		encoded = struct.pack('! 6s 6s H',Formatter.mac_to_bytes(self.dst),
+				Formatter.mac_to_bytes(self.src),int(self.ether_type))
 		return encoded
 
 	def decode(self,raw):
-		ether_dst,ether_src,self.ether_type=struct.unpack('! 6s 6s H',raw[:Ether.default_length])
-		self.dst=Formatter.bytes_to_mac(ether_dst)
-		self.src=Formatter.bytes_to_mac(ether_src)
+		ether_dst,ether_src,self.ether_type = struct.unpack('! 6s 6s H',raw[:Ether.default_length])
+		self.dst = Formatter.bytes_to_mac(ether_dst)
+		self.src = Formatter.bytes_to_mac(ether_src)
 		return raw[Ether.default_length:]
