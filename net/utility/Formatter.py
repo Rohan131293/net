@@ -2,6 +2,7 @@ from __future__ import print_function
 from LogConfig import *
 import binascii
 import socket
+import string
 import sys
 import os
 
@@ -63,12 +64,10 @@ class Formatter:
 				return temp
 			return '\\x'+input_char
 
-		try:
-			list_bytes = [ str_message[i:i+2]for i in range (0,len(str_message),2)]
-			list_str = map(lambda x : bytes_to_str(x) ,list_bytes)
-			return ''.join(list_str)
-		except:
-			logging.error('Could not Parse')
+		list_bytes = [ str_message[i:i+2]for i in range (0,len(str_message),2)]
+		list_str = map(lambda x : bytes_to_str(x) ,list_bytes)
+		return ''.join(list_str)
+		
 
 	@staticmethod
 	def print_in_hex(byteStr):
