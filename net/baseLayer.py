@@ -22,6 +22,8 @@ class Layer:
 	def decode(self,raw):
 		print("{} : No decode method available with this class :(".format(self.__class__.__name__))
 		return None
+		
+	@staticmethod
 	def calculate_checksum(self,raw_data,checksum_position=0):
 		padding=struct.pack('!B',0)
 		data_len=len(raw_data)
