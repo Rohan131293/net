@@ -18,7 +18,7 @@ class ARP(Layer):
 
 		Formatter.printStruct(Structure)
 		
-		print('\narpLayer = ARP(op=1,hwsrc="00:00:00:00:00:00",psrc="127.0.0.1",hwdst="00:00:00:00:00:00",pdst="127.0.0.1")')
+		print('\narpLayer = ARP(op = 1, hwsrc = "00:00:00:00:00:00", psrc = "127.0.0.1", hwdst = "00:00:00:00:00:00", pdst = "127.0.0.1")')
 
 		print('#Parameters:')
 		print('ARP().hwtype = 0x0001')#http://www.embeddedsystemtesting.com/2012/08/what-is-hardware-type-in-arp-header.html
@@ -52,7 +52,7 @@ class ARP(Layer):
 		self.pdst = pdst
 
 	def show(self):
-		print('#ARP Layer:\nhwtype={}\nptype={}\nhwlen={}\nplen={}\nop={}\nhwsrc={}\npsrc={}\nhwdst={}\npdst={}\n'
+		print('#ARP Layer:\nhwtype = {}\nptype = {}\nhwlen = {}\nplen = {}\nop = {}\nhwsrc = {}\npsrc = {}\nhwdst = {}\npdst = {}\n'
 			.format(self.hwtype,self.ptype,self.hwlen,self.plen,self.op,self.hwsrc.upper(),self.psrc,self.hwdst.upper(),self.pdst))
 	
 	def summary(self):
