@@ -50,7 +50,7 @@ class ICMP(Layer):
 		#To Do: Add Support for Data Field
 
 	def show(self):
-		print('#ICMP Layer:\nptype = {}\ncode = {}\nchksum = {}\nid = {}\nseq = {}\n'
+		print('#ICMP Header:\nptype = {}\ncode = {}\nchksum = {}\nid = {}\nseq = {}\n'
 			.format(self.ptype,self.code,self.chksum,self.id,self.seq))
 	
 	def summary(self):
@@ -59,7 +59,7 @@ class ICMP(Layer):
 			ICMP.help()
 			return
 		ptype = ICMP.icmp_types[self.ptype]
-		print("#ICMP Layer : ICMP TYPE-> {}, ICMP ID-> {}, ICMP SEQ-> {}"
+		print("#ICMP Header: ICMP TYPE-> {}, ICMP ID-> {}, ICMP SEQ-> {}"
 			.format(ptype,self.id,self.seq))
 			
 	def encode(self):

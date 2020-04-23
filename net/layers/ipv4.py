@@ -62,7 +62,7 @@ class IPv4(Layer):
 		self.dst = dst
 
 	def show(self):
-		print('#IP Layer:\nversion = {}\nihl = {}\ntos = {}\nip_len = {}\nid = {}\nflags = {}\nfrag = {}\nttl = {}\nproto = {}\nchksum = {}\nsrc = {}\ndst = {}\n'
+		print('#IP Header:\nversion = {}\nihl = {}\ntos = {}\nip_len = {}\nid = {}\nflags = {}\nfrag = {}\nttl = {}\nproto = {}\nchksum = {}\nsrc = {}\ndst = {}\n'
 			.format(self.version,self.ihl,self.tos,self.ip_len,self.id,self.flags,self.frag,
 				self.ttl,self.proto,self.chksum,self.src,self.dst))
 	

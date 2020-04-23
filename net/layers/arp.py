@@ -52,7 +52,7 @@ class ARP(Layer):
 		self.pdst = pdst
 
 	def show(self):
-		print('#ARP Layer:\nhwtype = {}\nptype = {}\nhwlen = {}\nplen = {}\nop = {}\nhwsrc = {}\npsrc = {}\nhwdst = {}\npdst = {}\n'
+		print('#ARP Header:\nhwtype = {}\nptype = {}\nhwlen = {}\nplen = {}\nop = {}\nhwsrc = {}\npsrc = {}\nhwdst = {}\npdst = {}\n'
 			.format(self.hwtype,self.ptype,self.hwlen,self.plen,self.op,self.hwsrc.upper(),self.psrc,self.hwdst.upper(),self.pdst))
 	
 	def summary(self):
