@@ -9,3 +9,4 @@ from layers.raw import Raw
 from layers.ipv4 import IPv4
 from layers.icmp import ICMP
 from layers.udp import UDP
+from layers.tcp import TCP
