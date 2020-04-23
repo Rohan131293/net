@@ -7,3 +7,4 @@ from layers.ether import Ether
 from layers.arp import ARP
 from layers.raw import Raw
 from layers.ipv4 import IPv4
+from layers.icmp import ICMP
